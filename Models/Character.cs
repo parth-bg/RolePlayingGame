@@ -11,5 +11,6 @@ namespace RolePlayingGame.Models {
 
         // character have a corresponding user
         public User User { get; set; }
+        public Weapon Weapon { get; set; }
     }
 }
