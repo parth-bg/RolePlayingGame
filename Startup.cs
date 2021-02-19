@@ -40,7 +40,17 @@ namespace RolePlayingGame
             //services.AddScoped<ICharacterService, CharacterService>();
             services.AddScoped<ICharacterService, SQLCharacterService>();
             services.AddScoped<IAuthRepository, AuthRepository>();
-            
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(options => {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII
+                        .GetBytes(Configuration.GetSection("AppSettings:Token").Value)),
+                        ValidateIssuer = false,
+                        ValidateAudience = false
+                };
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "RolePlayingGame", Version = "v1" });
@@ -60,7 +70,8 @@ namespace RolePlayingGame
             //app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
