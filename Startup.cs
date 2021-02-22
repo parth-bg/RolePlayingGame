@@ -19,6 +19,7 @@ using Microsoft.OpenApi.Models;
 using RolePlayingGame.Data;
 using RolePlayingGame.Services;
 using RolePlayingGame.Services.CharacterSkillService;
+using RolePlayingGame.Services.FightService;
 using RolePlayingGame.Services.WeaponService;
 
 namespace RolePlayingGame
@@ -46,6 +47,7 @@ namespace RolePlayingGame
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IWeaponService, WeaponService>();
             services.AddScoped<ICharacterSkillService, CharacterSkillService>();
+            services.AddScoped<IFightService, FightService>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options => {
