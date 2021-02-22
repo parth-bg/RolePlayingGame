@@ -18,6 +18,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using RolePlayingGame.Data;
 using RolePlayingGame.Services;
+using RolePlayingGame.Services.CharacterSkillService;
 using RolePlayingGame.Services.WeaponService;
 
 namespace RolePlayingGame
@@ -44,7 +45,8 @@ namespace RolePlayingGame
             services.AddScoped<ICharacterService, SQLCharacterService>();
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IWeaponService, WeaponService>();
-            
+            services.AddScoped<ICharacterSkillService, CharacterSkillService>();
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options => {
                 options.TokenValidationParameters = new TokenValidationParameters

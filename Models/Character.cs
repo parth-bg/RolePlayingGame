@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace RolePlayingGame.Models {
     public class Character 
     {
@@ -12,5 +14,6 @@ namespace RolePlayingGame.Models {
         // character have a corresponding user
         public User User { get; set; }
         public Weapon Weapon { get; set; }
+        public List<CharacterSkill> CharacterSkills { get; set; }
     }
 }
