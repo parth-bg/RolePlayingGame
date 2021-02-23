@@ -33,5 +33,11 @@ namespace RolePlayingGame.Controllers
         {
             return Ok(await _fightService.Fight(request));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetHighscore()
+        {
+            return Ok(await _fightService.GetHighscore());
+        }
     }
 }
