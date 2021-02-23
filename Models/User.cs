@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace RolePlayingGame.Models
 {
@@ -11,6 +12,9 @@ namespace RolePlayingGame.Models
 
         // user gets the list of rpg-characters
         public List<Character> Characters { get; set; }
+
+        [Required]
+        public string Role { get; set; }
         
     }
 }
